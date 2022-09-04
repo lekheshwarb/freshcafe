@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_04_145132) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_04_162636) do
   create_table "menu_categories", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -29,6 +29,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_04_145132) do
     t.index ["menu_category_id"], name: "index_menu_items_on_menu_category_id"
   end
 
+  create_table "order_items", charset: "utf8", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "menu_item_id", null: false
+    t.integer "quantity"
+    t.string "menu_item_name"
+    t.decimal "menu_item_price", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_item_id"], name: "index_order_items_on_menu_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "delivered_at"
+    t.string "status"
+    t.text "instructions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "role"
@@ -40,4 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_04_145132) do
   end
 
   add_foreign_key "menu_items", "menu_categories"
+  add_foreign_key "order_items", "menu_items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "users"
 end

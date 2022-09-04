@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  delivered_at: 2022-09-04
+  status: MyString
+  instructions: MyText
+
+two:
+  user: two
+  delivered_at: 2022-09-04
+  status: MyString
+  instructions: MyText
