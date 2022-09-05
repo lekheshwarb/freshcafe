@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_04_162636) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_05_082332) do
   create_table "menu_categories", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_04_162636) do
 
   create_table "orders", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.date "delivered_at"
+    t.datetime "delivered_at", precision: nil
     t.string "status"
     t.text "instructions"
     t.datetime "created_at", null: false
