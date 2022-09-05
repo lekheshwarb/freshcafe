@@ -27,7 +27,6 @@ Order.create({
   instructions: "Make it spicy..",
 })
 
-' ""
 
 OrderItem.create({
   order_id: 1,
@@ -36,3 +35,6 @@ OrderItem.create({
   menu_item_name: "Idli",
   menu_item_price: 15,
 })
+
+
+' ""

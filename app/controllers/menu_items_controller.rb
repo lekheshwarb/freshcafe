@@ -7,9 +7,9 @@ class MenuItemsController < ApplicationController
   def create
     item = MenuItem.new(menu_item_params)
     if item.save
-      render json: { status: "SUCCESS", message: "Added Menu Item", data: items }, status: :ok
+      render json: { status: "SUCCESS", message: "Added Menu Item", data: item }, status: :ok
     else
-      render json: { status: "ERROR", message: "Failed to add new Item to Menu", data: items }, status: :unprocessable_entity
+      render json: { status: "ERROR", message: "Failed to add new Item to Menu", data: item }, status: :unprocessable_entity
     end
   end
 
