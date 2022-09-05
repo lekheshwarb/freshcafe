@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if user.update(user_params)
       render json: { status: "SUCCESS", message: "Updated User", data: user }, status: :ok
     else
-      render json: { status: "SUCCESS", message: "Failed to Update User", data: user }, status: :ok
+      render json: { status: "ERROR", message: "Failed to Update User", data: user }, status: :unprocessable_entity
     end
   end
 

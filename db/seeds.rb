@@ -20,4 +20,19 @@ MenuItem.create({
   menu_category_id: 1,
 })
 
+
+Order.create({
+  user_id: 2,
+  status: "Queued",
+  instructions: "Make it spicy..",
+})
+
 ' ""
+
+OrderItem.create({
+  order_id: 1,
+  menu_item_id: 1,
+  quantity: 2,
+  menu_item_name: "Idli",
+  menu_item_price: 15,
+})
