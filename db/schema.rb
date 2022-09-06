@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_05_082332) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_072939) do
   create_table "menu_categories", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_082332) do
     t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest", null: false
   end
 
   add_foreign_key "menu_items", "menu_categories"
