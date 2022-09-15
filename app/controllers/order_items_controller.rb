@@ -1,7 +1,7 @@
 class OrderItemsController < ApplicationController
   def index
     orders = OrderItem.all()
-    render json: { status: "SUCCESS", message: "Loaded order Items", data: orders }, status: :ok
+    render json: { order: orders }, status: :ok
   end
 
   def create

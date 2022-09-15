@@ -1,7 +1,23 @@
 class OrdersController < ApplicationController
   def index
-    orders = Order.all()
-    render json: { status: "SUCCESS", message: "Loaded Orders", data: orders }, status: :ok
+    all_orders = Order.all()
+    orders = []
+
+    all_orders.each do |order|
+      user_name = User.find(order.user_id).name
+      order_items = OrderItem.where(order_id: order.id)
+
+      item_list = []
+      order_items.each do |item|
+        item = { quantity: item[:quantity], item_name: item[:menu_item_name], item_price: item[:menu_item_price] }
+        item_list.push(item)
+      end
+
+      modifiedOrder = { id: order[:id], user: user_name, delivered_at: order[:delivered_at], status: order[:status], instructions: order[:instructions], created_at: order[:created_at], order_items: item_list }
+      orders.push(modifiedOrder)
+    end
+
+    render json: { order: orders }, status: :ok
   end
 
   def create
