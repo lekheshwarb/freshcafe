@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    puts "Hello world"
+    puts "test"
     user = User.find(params[:id])
     puts (user)
     if user.update(user_params)

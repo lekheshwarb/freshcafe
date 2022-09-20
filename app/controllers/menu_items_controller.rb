@@ -1,15 +1,15 @@
 class MenuItemsController < ApplicationController
   def index
     items = MenuItem.all()
-    render json: { status: "SUCCESS", message: "Loaded Items", data: items }, status: :ok
+    render json: { menu_item: items }, status: :ok
   end
 
   def create
     item = MenuItem.new(menu_item_params)
     if item.save
-      render json: { status: "SUCCESS", message: "Added Menu Item", data: item }, status: :ok
+      render json: { menu_item: item }, status: :ok
     else
-      render json: { status: "ERROR", message: "Failed to add new Item to Menu", data: item }, status: :unprocessable_entity
+      render json: { menu_item: item }, status: :unprocessable_entity
     end
   end
 
@@ -34,6 +34,6 @@ class MenuItemsController < ApplicationController
   private
 
   def menu_item_params
-    params.permit(:name, :description, :price, :production_cost, :menu_category_id, :is_out_of_stock)
+    params.require(:menu_item).permit(:name, :description, :price, :production_cost, :menu_category_id, :is_out_of_stock)
   end
 end

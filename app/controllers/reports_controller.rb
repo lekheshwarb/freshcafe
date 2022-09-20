@@ -8,8 +8,8 @@ class ReportsController < ApplicationController
     from_date = params[:from_date]
     to_date = params[:to_date]
 
-    orders = Order.where(user_id: user).where("created_at BETWEEN ? AND ?", from_date, to_date)
-
+    # orders = Order.where(user_id: user).where("created_at BETWEEN ? AND ?", from_date, to_date)
+    orders = Order.all()
     invoices = []
 
     orders.each do |order|
@@ -24,10 +24,10 @@ class ReportsController < ApplicationController
         item_list.push(item)
       end
 
-      invoice = { id: id, user_name: user[:name], status: order[:status], created_on: order[:created_at], items: item_list }
+      invoice = { id: id, user: user[:name], status: order[:status], created_at: order[:created_at], items: item_list }
       invoices.push(invoice)
     end
 
-    render json: { status: "SUCCESS", message: "Get order reports", data: invoices }, status: :ok
+    render json: { reports: invoices }, status: :ok
   end
 end

@@ -7,9 +7,9 @@ class MenuCategoriesController < ApplicationController
   def create
     category = MenuCategory.new(menuCategoryParams)
     if category.save
-      render json: { status: "SUCCESS", message: "Added Category", data: category }, status: :ok
+      render json: { menu_category: category }, status: :ok
     else
-      render json: { status: "ERROR", message: "Failed to add Category", data: category }, status: :unprocessable_entity
+      render json: { menu_category: category }, status: :unprocessable_entity
     end
   end
 
@@ -25,6 +25,6 @@ class MenuCategoriesController < ApplicationController
   private
 
   def menuCategoryParams
-    params.permit(:name)
+    params.require(:menu_category).permit(:name)
   end
 end

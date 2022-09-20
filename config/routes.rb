@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # get "staff/sign_up", to: ""
 
-  get "reports/overview", to: "reports#overview"
-  get "reports/invoices", to: "reports#invoices"
+  # get "reports/overview", to: "reports#overview"
+  get "reports", to: "reports#invoices"
 
   resources :users
   resources :menu_categories
