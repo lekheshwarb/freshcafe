@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # get "reports/overview", to: "reports#overview"
   get "reports", to: "reports#invoices"
 
+  post "login", to: "sessions#login"
   resources :users
   resources :menu_categories
   resources :menu_items
